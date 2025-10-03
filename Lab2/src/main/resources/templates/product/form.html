@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Product Form</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 2rem; }
+    form { border: 1px solid #ccc; padding: 1rem; border-radius: 8px; }
+    input, button { padding: .5rem .75rem; margin-right: .5rem; }
+    ul { margin-top: 1rem; }
+    label { display: inline-block; width: 70px; }
+    .row { margin: .35rem 0; }
+  </style>
+</head>
+<body>
+  <h2>Product</h2>
+
+  <form action="/product/save" method="post" th:object="${p}">
+    <div class="row">
+      <label for="name">Name</label>
+      <input id="name" name="name" th:field="*{name}" placeholder="Product name" />
+    </div>
+    <div class="row">
+      <label for="price">Price</label>
+      <input id="price" name="price" th:field="*{price}" placeholder="e.g. 10000" />
+    </div>
+    <button>Save</button>
+  </form>
+
+  <ul>
+    <li>name (?1): <span th:text="${p.name}">?</span></li>
+    <li>price (?1): <span th:text="${p.price}">?</span></li>
+  </ul>
+
+  <ul>
+    <li>name (?2): <span th:text="${p.name}">?</span></li>
+    <li>price (?2): <span th:text="${p.price}">?</span></li>
+  </ul>
+
+  <ul>
+    <th:block th:each="item : ${items}">
+      <li th:text="${item.name}"></li>
+      <li th:text="${item.price}"></li>
+    </th:block>
+  </ul>
+
+  <p>
+    <a href="/product/form">Mở lại form</a>
+  </p>
+</body>
+</html>
+

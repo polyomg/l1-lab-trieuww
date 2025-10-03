@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Page A</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 2rem; }
+    h1 { color: #333; }
+    .hint { margin-top: 1rem; color: #666; }
+  </style>
+</head>
+<body>
+  <!-- Hiển thị message trong Model -->
+  <h1 th:text="${message}">message from model</h1>
+  <!-- Hiển thị message truyền qua redirect params -->
+  <h1 th:text="${param.message}">message from redirect</h1>
+
+  <div class="hint">
+    <p><a href="/b">/b - forward to /a (Model)</a></p>
+    <p><a href="/c">/c - redirect to /a (RedirectAttributes)</a></p>
+    <p><a href="/d">/d - return body text</a></p>
+  </div>
+</body>
+</html>

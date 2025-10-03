@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Param Form</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 2rem; }
+    form { border: 1px solid #ccc; padding: 1rem; border-radius: 8px; }
+    input, button { padding: .5rem .75rem; }
+    ul { margin-top: 1rem; }
+  </style>
+</head>
+<body>
+  <h2>Form</h2>
+  <form action="/param/save/2021" method="post">
+    <input name="y" value="2031" />
+    <button>Save</button>
+  </form>
+
+  <ul>
+    <li>x: <span th:text="${x}">?</span></li>
+    <li>y: <span th:text="${y}">?</span></li>
+  </ul>
+
+  <p>
+    <a href="/param/form">Mở lại form</a>
+  </p>
+</body>
+</html>
