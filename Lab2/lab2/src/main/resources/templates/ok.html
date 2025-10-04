@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OK Form</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 2rem; }
+    form { border: 1px solid #ccc; padding: 1rem; border-radius: 8px; }
+    button { margin-right: .5rem; padding: .5rem 1rem; }
+    .result { margin-top: 1rem; font-weight: bold; color: #2a6; }
+  </style>
+  </head>
+<body>
+  <h2>Bài 1</h2>
+  <p>Tạo form có 3 nút và ánh xạ đến các phương thức trong controller.</p>
+
+  <form action="/ctrl/ok" method="post">
+    <!-- OK 1: POST /ctrl/ok => m1() -->
+    <button type="submit">OK 1</button>
+
+    <!-- OK 2: GET /ctrl/ok?from=get => m2() -->
+    <button type="submit" formmethod="get" formaction="/ctrl/ok?from=get">OK 2</button>
+
+    <!-- OK 3: POST /ctrl/ok?x => m3() -->
+    <button type="submit" formaction="/ctrl/ok?x">OK 3</button>
+  </form>
+
+  <div class="result" th:if="${called}" th:text="'Đã gọi: ' + ${called}"></div>
+
+  <p><a href="/ctrl/ok">Tải lại trang</a></p>
+</body>
+</html>
