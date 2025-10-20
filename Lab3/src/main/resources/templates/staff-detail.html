@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Staff Detail</title>
+    <style>
+        .card {
+            border: 1px solid #000;
+            width: 350px;
+            padding: 10px;
+            font-family: Arial, sans-serif;
+        }
+        .card img {
+            display: block;
+            margin: 0 auto 10px auto;
+            border-radius: 5px;
+            max-height: 200px;
+        }
+        .info-row {
+            border-bottom: 1px solid #ccc;
+            padding: 5px 0;
+        }
+        .info-row b {
+            display: inline-block;
+            width: 100px;
+        }
+    </style>
+</head>
+<body>
+<div class="card">
+    <!-- Hiển thị hình -->
+    <img src="/photo.jpg" width="200" height="200" alt="Staff photo">
+
+    <div class="info-row">
+        <b>Email:</b>
+        <span th:text="${staff.email}"></span>
+    </div>
+
+    <div class="info-row">
+        <b>Họ và tên:</b>
+        <!-- chữ in hoa đầu mỗi từ -->
+        <span th:text="${#strings.capitalizeWords(staff.fullname)}"></span>
+    </div>
+
+    <div class="info-row">
+        <b>Giới tính:</b>
+        <span th:text="${staff.gender ? 'Nam' : 'Nữ'}"></span>
+    </div>
+
+    <div class="info-row">
+        <b>Ngày sinh:</b>
+        <!-- định dạng dd-MM-yyyy -->
+        <span th:text="${#dates.format(staff.birthday, 'dd-MM-yyyy')}"></span>
+    </div>
+
+    <div class="info-row">
+        <b>Cấp bậc:</b>
+        <span th:switch="${staff.level}">
+            <span th:case="0">Úy</span>
+            <span th:case="1">Tá</span>
+            <span th:case="2">Tướng</span>
+            <span th:case="*">Chưa có</span>
+        </span>
+    </div>
+
+    <div class="info-row">
+        <b>Lương:</b>
+        <!-- 2 số lẻ, nhóm bằng dấu phẩy -->
+        <span th:text="${#numbers.formatDecimal(staff.salary, 0, 'COMMA', 2, 'POINT')}"></span>
+    </div>
+</div>
+</body>
+</html>
