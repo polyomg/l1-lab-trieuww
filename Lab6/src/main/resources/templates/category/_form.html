@@ -1,0 +1,11 @@
+<div th:fragment="form">
+<form th:object="${item}" method="post" action="/category/index">
+    <input th:field="*{id}" placeholder="Category Id?"/>
+    <input th:field="*{name}" placeholder="Category Name?"/>
+    <hr/>
+    <button formaction="/category/create" type="submit">Create</button>
+    <button formaction="/category/update" type="submit">Update</button>
+    <a th:href="@{|/category/delete/${item.id}|}">Delete</a>
+    <a href="/category/index">Reset</a>
+</form>
+</div>
